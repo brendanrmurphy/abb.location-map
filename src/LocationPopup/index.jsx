@@ -1,22 +1,29 @@
 import React from "react";
 import { Popup } from "react-map-gl";
-import {
-  StyledPopup,
-  PopupHeader,
-  PopupTitle,
-  PopupContent,
-} from "./styled";
+import { StyledPopup, PopupHeader, PopupTitle, PopupContent } from "./styled";
 
 function LocationPopup({ className, data, view, children, ...props }) {
   console.log(data);
   return (
     <StyledPopup className={className} {...props} as={Popup}>
       <PopupHeader>
-        <PopupTitle>{data.address}</PopupTitle>
+        <PopupTitle>{`ABB ${data.businessArea}`}</PopupTitle>
       </PopupHeader>
       <PopupContent>
-        <a href={data.state_resources} target="_blank" rel="noreferrer">
-          State Resources
+        <address>
+          {data.address}
+          <br />
+          {data.address2 && (
+            <>
+              {data.address2}
+              <br />
+            </>
+          )}
+          {data.city}, {data.state} {data.zipcode}
+        </address>
+        {data.phone && <p>Phone: {data.phone}</p>}
+        <a href={data.facilitySummary} target="_blank" rel="noreferrer">
+          Facility Summary
         </a>
       </PopupContent>
     </StyledPopup>

@@ -23,12 +23,12 @@ var map = {
     },
   },
   operate: [
-    {
-      run: (val) => {
-        return val.trim().toLowerCase();
-      },
-      on: "properties.address"
-    }
+    // {
+    //   run: (val) => {
+    //     return val.trim().toLowerCase();
+    //   },
+    //   on: "properties.address"
+    // }
   ],
   each: function (item, idx) {
     item.type = "Feature";

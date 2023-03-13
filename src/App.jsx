@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useMemo } from "react";
 import Map, {
   MapProvider,
   Source,
@@ -9,6 +9,7 @@ import Map, {
 import { mapConfig, mapStyle, mapboxToken } from "./config";
 import locations from "./data/locations";
 import LocationPopup from "./LocationPopup";
+import Pin from "./Pin";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./App.css";
 
@@ -16,6 +17,30 @@ function App() {
   const [mapViewState, setMapViewState] = useState(mapConfig);
   const [location, setLocation] = useState(null);
   const mapRef = useRef();
+
+  const pins = useMemo(
+    () =>
+      locations.map((location, index) => {
+          return (
+            <Marker
+              key={`marker-${index}`}
+              longitude={location.properties.longitude}
+              latitude={location.properties.latitude}
+              anchor="bottom"
+              onClick={(e) => {
+                // If we let the click event propagates to the map, it will immediately close the popup
+                // with `closeOnClick: true`
+                e.originalEvent.stopPropagation();
+                onClick(location);
+              }}
+            >
+              <Pin />
+            </Marker>
+          );
+        
+      }),
+    []
+  );
 
   const locationLayer = {
     id: "locations",
@@ -29,12 +54,12 @@ function App() {
     },
   };
 
-  const onClick = useCallback((event) => {
+  const onClick = useCallback((location) => {
     const feature = event.features && event.features[0];
-    if (feature) {
-      setLocation(feature.properties);
+    if (location) {
+      setLocation(location.properties);
       mapRef.current.flyTo({
-        center: [feature.properties.longitude, feature.properties.latitude],
+        center: [location.properties.longitude, location.properties.latitude],
         duration: 1000,
       });
     }
@@ -52,16 +77,16 @@ function App() {
         mapStyle={mapStyle}
         mapboxAccessToken={mapboxToken}
         interactiveLayerIds={["locations"]}
-        onClick={onClick}
+        // onClick={onClick}
       >
         <NavigationControl showCompass={false} />
-        <Source
+        {/* <Source
           id="locations"
           type="geojson"
           data={{ type: "FeatureCollection", features: locations }}
         >
           <Layer {...locationLayer} />
-        </Source>
+        </Source> */}
         {location && (
           <LocationPopup
             anchor="bottom"
@@ -72,6 +97,7 @@ function App() {
             data={location}
           ></LocationPopup>
         )}
+        {pins}
       </Map>
     </MapProvider>
   );

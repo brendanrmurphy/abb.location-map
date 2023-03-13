@@ -4,12 +4,13 @@ export const StyledPopup = styled.div`
   top: -10px;
   width: 275px;
   max-width: 275px !important;
+  font-size: 0.875rem;
   .mapboxgl-popup-content {
     padding: 0;
   }
 `;
 export const PopupHeader = styled.div`
-  padding: 8px 10px;
+  padding: 0.75rem 1.5rem 0.5rem 0.75rem;
   background: var(--color-secondary);
 
   span {
@@ -25,13 +26,11 @@ export const PopupTitle = styled.h3`
 
 export const PopupSubtitle = styled.p`
   margin: 0;
-  text-transform: uppercase;
-  font-size: 10px;
   line-height: 1.2;
 `;
 
 export const PopupContent = styled.div`
-  padding: 10px;
+  padding: 0 0.75rem 0.75rem 0.75rem;
   overflow-y: auto;
   color: var(--color-primary);
   line-height: 1.2;
@@ -46,7 +45,6 @@ export const PopupContent = styled.div`
   a {
     margin-top: 10px;
     color: var(--color-accent);
-    font-size: 10px;
-    text-transform: uppercase;
+    text-decoration: underline;
   }
 `;
