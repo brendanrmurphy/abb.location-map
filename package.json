@@ -1,0 +1,29 @@
+{
+  "name": "apex.siting-map",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:data": "node scripts/transform-coordinates",
+    "build:locations": "csvtojson src/data/locations.csv > src/data/locations.json && node scripts/transform-locations"
+  },
+  "dependencies": {
+    "mapbox-gl": "^2.13.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-map-gl": "^7.0.21",
+    "styled-components": "^5.3.8"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "csvtojson": "^2.0.10",
+    "fs": "^0.0.1-security",
+    "node-json-transform": "^1.1.2",
+    "vite": "^4.1.0"
+  }
+}
