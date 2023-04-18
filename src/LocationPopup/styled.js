@@ -2,15 +2,15 @@ import styled from "styled-components";
 export const StyledPopup = styled.div`
   color: #000;
   top: -10px;
-  width: 275px;
-  max-width: 275px !important;
+  width: 300px;
+  max-width: 300px !important;
   font-size: 0.875rem;
   .mapboxgl-popup-content {
     padding: 0;
   }
 `;
 export const PopupHeader = styled.div`
-  padding: 0.75rem 1.5rem 0.5rem 0.75rem;
+  padding: 0.75rem 2.5rem 0.5rem 0.75rem;
   background: var(--color-secondary);
 
   span {
@@ -21,6 +21,7 @@ export const PopupHeader = styled.div`
 export const PopupTitle = styled.h3`
   font-family: var(--font-primary);
   font-weight: 500;
+  font-size: 1rem;
   margin: 0;
 `;
 
