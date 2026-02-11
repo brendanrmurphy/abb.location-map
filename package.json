@@ -1,5 +1,5 @@
 {
-  "name": "apex.siting-map",
+  "name": "abb.location-map",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "build:data": "node scripts/transform-coordinates",
     "build:locations": "csvtojson src/data/locations.csv > src/data/locations.json && node scripts/transform-locations"
   },
   "dependencies": {

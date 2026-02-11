@@ -7,6 +7,7 @@ import Map, {
   Marker,
 } from "react-map-gl";
 import Select from "react-select";
+import { BusinessAreas, Filters, FilterLabel, ResetButton, LocationsMap, MapContainer } from "./styled";
 import { mapConfig, mapStyle, mapboxToken, initialBounds } from "./config";
 import locationsData from "./data/locations";
 import LocationPopup from "./LocationPopup";
@@ -167,10 +168,10 @@ function App() {
   }, [filters]);
 
   return (
-    <div className="map-container">
-      <button className="reset-button" onClick={handleMapReset}><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTIwMHB0IiBoZWlnaHQ9IjEyMDBwdCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTIwMCAxMjAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogPGc+CiAgPHBhdGggZD0ibTc0Ny42IDYwMGMwIDgxLjUxNi02Ni4wODYgMTQ3LjYtMTQ3LjYgMTQ3LjZzLTE0Ny42LTY2LjA4Ni0xNDcuNi0xNDcuNiA2Ni4wODYtMTQ3LjYgMTQ3LjYtMTQ3LjYgMTQ3LjYgNjYuMDg2IDE0Ny42IDE0Ny42Ii8+CiAgPHBhdGggZD0ibTEwNC40IDQ3NGM0MC44MDEgMCA3NC4zOTgtMzMuNjAyIDc0LjM5OC03NC4zOThsMC4wMDM5MDYtMjIwLjhoMjIyYzQwLjgwMSAwIDc0LjM5OC0zMy42MDIgNzQuMzk4LTc0LjM5OCAwLTQwLjgwMS0zMy42MDItNzQuMzk4LTc0LjM5OC03NC4zOThsLTI5Ni40LTAuMDAzOTA2Yy00MC44MDEgMC03NC4zOTggMzMuNjAyLTc0LjM5OCA3NC4zOTh2Mjk2LjRjMCA0MC44MDUgMzMuNjAyIDczLjIwMyA3NC4zOTggNzMuMjAzeiIvPgogIDxwYXRoIGQ9Im0xMDk1LjYgNzI2Yy00MC44MDEgMC03NC4zOTggMzMuNjAyLTc0LjM5OCA3NC4zOTh2MjIyaC0yMjJjLTQwLjgwMSAwLTc0LjM5OCAzMy42MDItNzQuMzk4IDc0LjM5OCAwIDQwLjgwMSAzMy42MDIgNzQuMzk4IDc0LjM5OCA3NC4zOThoMjk2LjRjNDAuODAxIDAgNzQuMzk4LTMzLjYwMiA3NC4zOTgtNzQuMzk4bDAuMDAzOTA2LTI5Ny42YzAtNDAuODAxLTMzLjYwMi03My4xOTktNzQuMzk4LTczLjE5OXoiLz4KICA8cGF0aCBkPSJtNDAwLjggMTAyMS4yaC0yMjJ2LTIyMmMwLTQwLjgwMS0zMy42MDItNzQuMzk4LTc0LjM5OC03NC4zOTgtNDAuODAxIDAtNzQuMzk4IDMzLjYwMi03NC4zOTggNzQuMzk4djI5Ni40YzAgNDAuODAxIDMzLjYwMiA3NC4zOTggNzQuMzk4IDc0LjM5OGgyOTYuNGM0MC44MDEgMCA3NC4zOTgtMzMuNjAyIDc0LjM5OC03NC4zOTgtMS4xOTkyLTQwLjc5Ny0zMy41OTgtNzQuMzk4LTc0LjM5OC03NC4zOTh6Ii8+CiAgPHBhdGggZD0ibTEwOTUuNiAzMGgtMjk2LjRjLTQwLjgwMSAwLTc0LjM5OCAzMy42MDItNzQuMzk4IDc0LjM5OCAwIDQwLjgwMSAzMy42MDIgNzQuMzk4IDc0LjM5OCA3NC4zOThoMjIydjIyMmMwIDQwLjgwMSAzMy42MDIgNzQuMzk4IDc0LjM5OCA3NC4zOTggNDAuODAxIDAgNzQuMzk4LTMzLjYwMiA3NC4zOTgtNzQuMzk4bDAuMDAzOTA2LTI5Ni40YzAtNDAuNzk3LTMzLjYwMi03NC4zOTgtNzQuMzk4LTc0LjM5OHoiLz4KIDwvZz4KPC9zdmc+Cg==" />Re-center</button>
+    <MapContainer>
+      <ResetButton onClick={handleMapReset}><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTIwMHB0IiBoZWlnaHQ9IjEyMDBwdCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTIwMCAxMjAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogPGc+CiAgPHBhdGggZD0ibTc0Ny42IDYwMGMwIDgxLjUxNi02Ni4wODYgMTQ3LjYtMTQ3LjYgMTQ3LjZzLTE0Ny42LTY2LjA4Ni0xNDcuNi0xNDcuNiA2Ni4wODYtMTQ3LjYgMTQ3LjYtMTQ3LjYgMTQ3LjYgNjYuMDg2IDE0Ny42IDE0Ny42Ii8+CiAgPHBhdGggZD0ibTEwNC40IDQ3NGM0MC44MDEgMCA3NC4zOTgtMzMuNjAyIDc0LjM5OC03NC4zOThsMC4wMDM5MDYtMjIwLjhoMjIyYzQwLjgwMSAwIDc0LjM5OC0zMy42MDIgNzQuMzk4LTc0LjM5OCAwLTQwLjgwMS0zMy42MDItNzQuMzk4LTc0LjM5OC03NC4zOThsLTI5Ni40LTAuMDAzOTA2Yy00MC44MDEgMC03NC4zOTggMzMuNjAyLTc0LjM5OCA3NC4zOTh2Mjk2LjRjMCA0MC44MDUgMzMuNjAyIDczLjIwMyA3NC4zOTggNzMuMjAzeiIvPgogIDxwYXRoIGQ9Im0xMDk1LjYgNzI2Yy00MC44MDEgMC03NC4zOTggMzMuNjAyLTc0LjM5OCA3NC4zOTh2MjIyaC0yMjJjLTQwLjgwMSAwLTc0LjM5OCAzMy42MDItNzQuMzk4IDc0LjM5OCAwIDQwLjgwMSAzMy42MDIgNzQuMzk4IDc0LjM5OCA3NC4zOThoMjk2LjRjNDAuODAxIDAgNzQuMzk4LTMzLjYwMiA3NC4zOTgtNzQuMzk4bDAuMDAzOTA2LTI5Ny42YzAtNDAuODAxLTMzLjYwMi03My4xOTktNzQuMzk4LTczLjE5OXoiLz4KICA8cGF0aCBkPSJtNDAwLjggMTAyMS4yaC0yMjJ2LTIyMmMwLTQwLjgwMS0zMy42MDItNzQuMzk4LTc0LjM5OC03NC4zOTgtNDAuODAxIDAtNzQuMzk4IDMzLjYwMi03NC4zOTggNzQuMzk4djI5Ni40YzAgNDAuODAxIDMzLjYwMiA3NC4zOTggNzQuMzk4IDc0LjM5OGgyOTYuNGM0MC44MDEgMCA3NC4zOTgtMzMuNjAyIDc0LjM5OC03NC4zOTgtMS4xOTkyLTQwLjc5Ny0zMy41OTgtNzQuMzk4LTc0LjM5OC03NC4zOTh6Ii8+CiAgPHBhdGggZD0ibTEwOTUuNiAzMGgtMjk2LjRjLTQwLjgwMSAwLTc0LjM5OCAzMy42MDItNzQuMzk4IDc0LjM5OCAwIDQwLjgwMSAzMy42MDIgNzQuMzk4IDc0LjM5OCA3NC4zOThoMjIydjIyMmMwIDQwLjgwMSAzMy42MDIgNzQuMzk4IDc0LjM5OCA3NC4zOTggNDAuODAxIDAgNzQuMzk4LTMzLjYwMiA3NC4zOTgtNzQuMzk4bDAuMDAzOTA2LTI5Ni40YzAtNDAuNzk3LTMzLjYwMi03NC4zOTgtNzQuMzk4LTc0LjM5OHoiLz4KIDwvZz4KPC9zdmc+Cg==" />Re-center</ResetButton>
       <MapProvider>
-        <Map
+        <LocationsMap
           {...mapViewState}
           id="locationsMap"
           ref={mapRef}
@@ -193,11 +194,10 @@ function App() {
             ></LocationPopup>
           )}
           {pins}
-        </Map>
-        <div className="filters">
-          <span className="filter-label">Business Area</span>
-          <Select
-            className="business-areas"
+        </LocationsMap>
+        <Filters>
+          <FilterLabel>Business Area</FilterLabel>
+          <BusinessAreas
             // isSearchable
             isMulti
             styles={selectStyles}
@@ -220,9 +220,9 @@ function App() {
             //   // Option: CustomOption,
             // }}
           />
-        </div>
+        </Filters>
       </MapProvider>
-    </div>
+    </MapContainer>
   );
 }
 

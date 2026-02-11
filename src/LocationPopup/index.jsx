@@ -22,9 +22,11 @@ function LocationPopup({ className, data, view, children, ...props }) {
           {data.city}, {data.state} {data.zipcode}
         </address>
         {data.phone && <p>Phone: {data.phone}</p>}
-        <a href={data.facilitySummary} target="_blank" rel="noreferrer">
-          Facility Summary
-        </a>
+        {data.facilitySummary && (
+          <a href={data.facilitySummary} target="_blank" rel="noreferrer">
+            Facility Summary
+          </a>
+        )}
       </PopupContent>
     </StyledPopup>
   );

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const StyledPopup = styled.div`
-  color: #000;
+  color: #262626;
   top: -10px;
   width: 300px;
   max-width: 300px !important;
@@ -11,15 +11,13 @@ export const StyledPopup = styled.div`
 `;
 export const PopupHeader = styled.div`
   padding: 0.75rem 2.5rem 0.5rem 0.75rem;
-  background: var(--color-secondary);
 
   span {
-    color: var(--color-primary);
+    color: #262626;
   }
 `;
 
-export const PopupTitle = styled.h3`
-  font-family: var(--font-primary);
+export const PopupTitle = styled.div`
   font-weight: 500;
   font-size: 1rem;
   margin: 0;
@@ -33,19 +31,21 @@ export const PopupSubtitle = styled.p`
 export const PopupContent = styled.div`
   padding: 0 0.75rem 0.75rem 0.75rem;
   overflow-y: auto;
-  color: var(--color-primary);
+  color: #262626;
   line-height: 1.2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  span {
-    font-family: var(--font-primary);
+  address {
+    margin: 0 0 0.5rem 0;
   }
-
+  p {
+    font-size: 0.875rem;
+    margin: 0 0 0.5rem 0 !important;
+  }
   a {
-    margin-top: 10px;
-    color: var(--color-accent);
+    color: #262626;
     text-decoration: underline;
   }
 `;
